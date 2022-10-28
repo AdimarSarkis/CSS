@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+            
+            text-decoration: none;
+            font-family: Oswald, sans-serif; 
+            font-size: 18px;
+        }
+        :root{
+            --corTurquesa: #A4E0DC;
+            --corTurquesaEscuro: #6CCDCE;
+            --corMarromClaro: #E5C9AD;
+            --corMarrom: #8D6A5B;
+            --corLavanda: #D0CDD6;
+        }
+        body{
+            background-color: rgb(121, 121, 121);
+        }
+        .cabecalho{
+            background: rgb(33, 33, 33);
+            width: 100%;
+            display: inline-block;
+            border-bottom: solid 3px var(--corTurquesaEscuro);
+            box-sizing: content-box;
+        }
+        a{
+            color: aliceblue; 
+            padding: 15px;
+        }
+        .logo{
+            display: inline-block;
+            height: 12vh;
+        }
+        .logo img{
+            width: 20vw;
+            height: 8vh;
+            margin: 10px;
+        }
+        .menu-toggle{
+            float: right;
+            color: #eee;
+            background-color: #555;
+            border: solid 1px #777;
+            border-radius: 5px;
+            height: 40px;
+            padding: 1px 10px; 
+            margin: 15px 20px;
+        }
+        .menu{
+            position: absolute;
+            left: 23%;
+            top: 25px;
+        }
+        .menu ul li{
+            display: inline-block;
+            list-style: none;           
+            margin-right: 10px;
+        }
+        .menu a:hover{
+            background-color: #6CCDCE;
+            color: black;
+            padding: 15px;
+        }
+        .autenticacao{
+            float: right;
+            height: 80px;
+            padding: 25px;
+        }
+        .autenticacao .destaque{
+            background-color: red;
+            padding: 8px 25px;
+            border-radius: 50px;
+        }
+        
+        .menu a:hover, .menu a.selected{
+            background-color: #6CCDCE;
+            color: black;
+        }
+
+        @media (min-width: 679px){
+            .menu-toggle{display: none;}
+        }
+        @media (max-width: 680px){
+            .menu {display: none;}
+        }
+        @media (max-width: 910px){
+            .autenticacao {display: none;}
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio" class="">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos" class="">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre" class="">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato" class="">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        window.onhashchange = function(e){
+            const oldUrl = e.oldUrl.split("#")[1]
+            const newUrl = e.newUrl.split("#")[1]
+            const oldMenu = document.querySelector(`.menu [href='#${oldUrl}']`)
+            const newMenu = document.querySelector(`.menu [href='#${newUrl}']`)
+            oldMenu && oldMenu.classList.remove('selected')
+            newMenu && newMenu.classList.add('selected')
+        }
+    </script>
+</body>
+
+</html>

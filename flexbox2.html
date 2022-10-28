@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #02</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        div{
+            border: solid 3px dodgerblue;
+            font-size: 40px;
+        }
+        .flex-container div{
+            box-sizing: border-box;
+        }
+        .flex-container{
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+        .flex-container div:nth-child(3){
+            background-color: indianred;
+            order: 1; /* Manipula a ordem do flex-container, como é uma ordem maior, vira
+            o ultimo elemento a ser considerado*/
+            order: 0; /* Fica como estava no html*/
+            order: -1; /* Vira o primeiro elemento*/
+            align-self: center;
+            align-self: flex-end;
+            align-self: flex-start;
+            align-self: stretch;
+        }
+        .flex-container div{
+            width: 100px;
+            /*flex-grow vai aplicar o peso em cada item, somar. Vai dividir 
+            o valor de px restantantes, o resultado vai aplicar em cada item de 
+            acordo com o seu peso*/
+            flex-grow: 0;
+            flex-grow: 1;
+        }
+        .flex-container div:nth-child(1){/*Vai pegar o 1º filho de acordo com o html*/
+            flex-grow: 2;
+        }
+        .flex-container{
+            width: 300px;
+            flex-shrink: 1;/* igual ao flex-grow, só que para encolher*/
+        }
+        .flex-container div:nth-child(1){
+            flex-shrink: 5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel">3</div>
+        <div class="tag nolabel">4</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>
